@@ -1,16 +1,16 @@
 // Package cloudxns adapts the lego CloudXNS DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package cloudxns
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/cloudxns"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("cloudxns", NewDNSProvider)
+	caskettls.RegisterDNSProvider("cloudxns", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new CloudXNS DNS challenge provider.
@@ -19,7 +19,7 @@ func init() {
 // len(0): use credentials from environment
 // len(2): credentials[0] = API key
 //         credentials[1] = Secret key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return cloudxns.NewDNSProvider()

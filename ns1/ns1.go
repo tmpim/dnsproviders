@@ -3,12 +3,12 @@ package ns1
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/ns1"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("ns1", NewDNSProvider)
+	caskettls.RegisterDNSProvider("ns1", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new ns1.DNSProvider DNS challenge provider.
@@ -16,7 +16,7 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(1): credentials[0] = API key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return ns1.NewDNSProvider()

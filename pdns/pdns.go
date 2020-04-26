@@ -1,17 +1,17 @@
 // Package pdns adapts the lego PowerDNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package pdns
 
 import (
 	"errors"
 	"net/url"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/pdns"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("powerdns", NewDNSProvider)
+	caskettls.RegisterDNSProvider("powerdns", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new PowerDNS challenge provider.
@@ -19,7 +19,7 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(2): credentials[0] = pdns API URL, credentials[1] = pdns API key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return pdns.NewDNSProvider()

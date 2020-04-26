@@ -1,16 +1,16 @@
 // Package generic adapts the lego exec DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package generic
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/exec"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("generic", NewDNSProvider)
+	caskettls.RegisterDNSProvider("generic", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new exec DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use program to run from environment variable EXEC_PATH
 // len(1): credentials[0] = program to run
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return exec.NewDNSProvider()

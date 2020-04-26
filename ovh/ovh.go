@@ -1,16 +1,16 @@
 // Package ovh adapts the lego OVH DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package ovh
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/ovh"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("ovh", NewDNSProvider)
+	caskettls.RegisterDNSProvider("ovh", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new OVH DNS challenge provider.
@@ -21,7 +21,7 @@ func init() {
 //         credentials[1] = Application Key
 //         credentials[2] = Application Secret
 //         credentials[3] = Consumer Key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return ovh.NewDNSProvider()

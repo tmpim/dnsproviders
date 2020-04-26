@@ -1,16 +1,16 @@
 // Package vscale adapts the lego Vscale DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package vscale
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/vscale"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("vscale", NewDNSProvider)
+	caskettls.RegisterDNSProvider("vscale", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Vscale DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use credentials from environment (https://godoc.org/github.com/go-acme/lego/providers/dns/vscale)
 // len(1): credentials[0] = Token
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return vscale.NewDNSProvider()

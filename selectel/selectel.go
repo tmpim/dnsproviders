@@ -1,16 +1,16 @@
 // Package selectel adapts the lego Selectel DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package selectel
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/selectel"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("selectel", NewDNSProvider)
+	caskettls.RegisterDNSProvider("selectel", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Selectel DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use credentials from environment (https://godoc.org/github.com/go-acme/lego/providers/dns/selectel)
 // len(1): credentials[0] = Token
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return selectel.NewDNSProvider()

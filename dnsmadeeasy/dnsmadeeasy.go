@@ -1,16 +1,16 @@
 // Package dnsimple adapts the lego DNS Made Easy DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package dnsmadeeasy
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/dnsmadeeasy"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("dnsmadeeasy", NewDNSProvider)
+	caskettls.RegisterDNSProvider("dnsmadeeasy", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new DNS Made Easy DNS challenge provider.
@@ -20,7 +20,7 @@ func init() {
 // len(3): credentials[0] = API Endpoint
 //         credentials[1] = API key
 //         credentials[2] = API secret
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return dnsmadeeasy.NewDNSProvider()

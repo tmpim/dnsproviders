@@ -3,12 +3,12 @@ package stackpath
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/stackpath"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("stackpath", NewDNSProvider)
+	caskettls.RegisterDNSProvider("stackpath", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Stackpath DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 // len(3): credentials[0] = client id
 //         credentials[1] = client secret
 //         credentials[2] = stack id
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return stackpath.NewDNSProvider()

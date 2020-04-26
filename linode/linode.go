@@ -1,16 +1,16 @@
 // Package linode adapts the lego Linode DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package linode
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/linode"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("linode", NewDNSProvider)
+	caskettls.RegisterDNSProvider("linode", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Linode DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(1): credentials[0] = access token (API key)
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return linode.NewDNSProvider()

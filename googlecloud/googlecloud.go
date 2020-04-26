@@ -1,16 +1,16 @@
 // Package googlecloud adapts the lego Google Cloud DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package googlecloud
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/gcloud"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("googlecloud", NewDNSProvider)
+	caskettls.RegisterDNSProvider("googlecloud", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Google Cloud DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(1): credentials[0] = project
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return gcloud.NewDNSProvider()

@@ -1,16 +1,16 @@
 // Package nifcloud adapts the lego NIFCLOUD DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package nifcloud
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/nifcloud"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("nifcloud", NewDNSProvider)
+	caskettls.RegisterDNSProvider("nifcloud", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new NIFCLOUD DNS challenge provider.
@@ -20,7 +20,7 @@ func init() {
 // len(3): credentials[0] = Base URL
 //         credentials[1] = ACCESS KEY ID
 //         credentials[2] = SECRET ACCESS KEY
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return nifcloud.NewDNSProvider()

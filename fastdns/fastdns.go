@@ -1,16 +1,16 @@
 // Package fastdsn adapts the lego FastDNS DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package fastdns
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/fastdns"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("fastdns", NewDNSProvider)
+	caskettls.RegisterDNSProvider("fastdns", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new FastDNS DNS challenge provider.
@@ -21,7 +21,7 @@ func init() {
 //         credentials[1] = Client Token
 //         credentials[2] = Client Secret
 //         credentials[3] = Access Token
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return fastdns.NewDNSProvider()

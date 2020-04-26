@@ -1,16 +1,16 @@
 // Package glesys adapts the lego GleSYS DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package glesys
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/glesys"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("glesys", NewDNSProvider)
+	caskettls.RegisterDNSProvider("glesys", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new GleSYS DNS challenge provider.
@@ -19,7 +19,7 @@ func init() {
 // len(0): use credentials from environment
 // len(2): credentials[0] = API user
 //         credentials[1] = API key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return glesys.NewDNSProvider()

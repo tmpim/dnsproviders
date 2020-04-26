@@ -1,16 +1,16 @@
 // Package otc adapts the lego Open Telekom Cloud Managed DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package otc
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/otc"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("otc", NewDNSProvider)
+	caskettls.RegisterDNSProvider("otc", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new OTC Managed DNS challenge provider.
@@ -22,7 +22,7 @@ func init() {
 //         credentials[2] = Password
 //         credentials[3] = Project name
 //         credentials[4] = Identity endpoint
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return otc.NewDNSProvider()

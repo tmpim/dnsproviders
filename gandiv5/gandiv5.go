@@ -1,16 +1,16 @@
 // Package gandiv5 adapts the lego Gandiv5 DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package gandiv5
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/gandiv5"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("gandiv5", NewDNSProvider)
+	caskettls.RegisterDNSProvider("gandiv5", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Gandiv5 DNS challenge provider.
@@ -18,7 +18,7 @@ func init() {
 //
 // len(0): use API key from `GANDIV5_API_KEY` env var
 // len(1): credentials[0] = API key
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return gandiv5.NewDNSProvider()

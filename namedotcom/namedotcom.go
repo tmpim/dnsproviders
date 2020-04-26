@@ -1,16 +1,16 @@
 // Package namedotcom adapts the lego Name.com DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package namedotcom
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/namedotcom"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("namedotcom", NewDNSProvider)
+	caskettls.RegisterDNSProvider("namedotcom", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Name.com DNS challenge provider.
@@ -22,7 +22,7 @@ func init() {
 // len(3): credentials[0] = username
 //         credentials[1] = API token
 //         credentials[2] = Server
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	config := namedotcom.NewDefaultConfig()
 
 	switch len(credentials) {

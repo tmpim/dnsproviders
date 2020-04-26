@@ -1,16 +1,16 @@
 // Package godaddy adapts the lego GoDaddy DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package godaddy
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/godaddy"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("godaddy", NewDNSProvider)
+	caskettls.RegisterDNSProvider("godaddy", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new GoDaddy DNS challenge provider.
@@ -19,7 +19,7 @@ func init() {
 // len(0): use credentials from environment
 // len(2): credentials[0] = API key
 //         credentials[1] = API secret
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return godaddy.NewDNSProvider()

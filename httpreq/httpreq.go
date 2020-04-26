@@ -1,17 +1,17 @@
 // Package httpreq adapts the lego httpreq DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package httpreq
 
 import (
 	"errors"
 	"net/url"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/httpreq"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("httpreq", NewDNSProvider)
+	caskettls.RegisterDNSProvider("httpreq", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new httpreq DNS challenge provider.
@@ -22,7 +22,7 @@ func init() {
 //         credentials[1] = Mode
 //         credentials[2] = Username
 //         credentials[3] = Password
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return httpreq.NewDNSProvider()
@@ -34,7 +34,7 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 			return nil, errors.New("endpoint is not a valid URL")
 		}
 
-		config.Endpoint = endpoint 
+		config.Endpoint = endpoint
 		config.Mode = credentials[1]
 		config.Username = credentials[2]
 		config.Password = credentials[3]

@@ -1,17 +1,17 @@
 // Package rfc2136 adapts the lego RFC 2136 dynamic update DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package rfc2136
 
 import (
 	"errors"
 	"time"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/rfc2136"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("rfc2136", NewDNSProvider)
+	caskettls.RegisterDNSProvider("rfc2136", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new RFC 2136 DNS challenge provider.
@@ -28,7 +28,7 @@ func init() {
 //         credentials[2] = TSIG key
 //         credentials[3] = TSIG secret
 //         credentials[4] = DNS propagation timeout
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	var timeout time.Duration
 
 	switch len(credentials) {

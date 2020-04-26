@@ -1,5 +1,5 @@
 // Package namesilo adapts the lego namesilo DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package namesilo
 
 import (
@@ -7,12 +7,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/namesilo"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("namesilo", NewDNSProvider)
+	caskettls.RegisterDNSProvider("namesilo", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new namesilo DNS challenge provider.
@@ -23,7 +23,7 @@ func init() {
 //         credentials[1] = TTL
 //         credentials[2] = Propagation timeout
 //         credentials[3] = Polling interval
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return namesilo.NewDNSProvider()

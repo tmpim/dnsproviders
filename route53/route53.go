@@ -1,23 +1,23 @@
 // Package route53 adapts the lego Route53 DNS
-// provider for Caddy. Importing this package plugs it in.
+// provider for Casket. Importing this package plugs it in.
 package route53
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/route53"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("route53", NewDNSProvider)
+	caskettls.RegisterDNSProvider("route53", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Route53 DNS challenge provider.
 // The credentials are detected automatically; see underlying
 // package docs for details:
 // https://godoc.org/github.com/go-acme/lego/providers/dns/route53
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return route53.NewDNSProvider()

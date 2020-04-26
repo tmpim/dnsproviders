@@ -1,16 +1,16 @@
 // Package dyn adapts the lego Dyn DNS provider
-// for Caddy. Importing this package plugs it in.
+// for Casket. Importing this package plugs it in.
 package dyn
 
 import (
 	"errors"
 
-	"github.com/caddyserver/caddy/caddytls"
+	"github.com/tmpim/casket/caskettls"
 	"github.com/go-acme/lego/v3/providers/dns/dyn"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("dyn", NewDNSProvider)
+	caskettls.RegisterDNSProvider("dyn", NewDNSProvider)
 }
 
 // NewDNSProvider returns a new Dyn DNS challenge provider.
@@ -20,7 +20,7 @@ func init() {
 // len(3): credentials[0] = customer name
 //         credentials[1] = username
 //         credentials[2] = password
-func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return dyn.NewDNSProvider()
