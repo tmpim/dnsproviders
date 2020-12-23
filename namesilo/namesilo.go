@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/go-acme/lego/v4/providers/dns/namesilo"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/namesilo"
 )
 
 func init() {

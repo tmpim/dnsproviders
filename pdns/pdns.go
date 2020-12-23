@@ -6,8 +6,8 @@ import (
 	"errors"
 	"net/url"
 
+	"github.com/go-acme/lego/v4/providers/dns/pdns"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/pdns"
 )
 
 func init() {

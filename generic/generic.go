@@ -5,8 +5,8 @@ package generic
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/exec"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/exec"
 )
 
 func init() {

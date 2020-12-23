@@ -5,8 +5,8 @@ package digitalocean
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/digitalocean"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/digitalocean"
 )
 
 func init() {

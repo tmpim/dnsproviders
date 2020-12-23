@@ -5,8 +5,8 @@ package selectel
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/selectel"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/selectel"
 )
 
 func init() {

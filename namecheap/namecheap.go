@@ -5,8 +5,8 @@ package namecheap
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/namecheap"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/namecheap"
 )
 
 func init() {

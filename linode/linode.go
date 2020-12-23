@@ -5,8 +5,8 @@ package linode
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/linode"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/linode"
 )
 
 func init() {
@@ -24,7 +24,7 @@ func NewDNSProvider(credentials ...string) (caskettls.ChallengeProvider, error) 
 		return linode.NewDNSProvider()
 	case 1:
 		config := linode.NewDefaultConfig()
-		config.APIKey = credentials[0]
+		config.Token = credentials[0]
 		return linode.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")

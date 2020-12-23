@@ -5,8 +5,8 @@ package transip
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/transip"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/transip"
 )
 
 func init() {

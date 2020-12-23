@@ -5,8 +5,8 @@ package dnsimple
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/dnsimple"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/dnsimple"
 )
 
 func init() {

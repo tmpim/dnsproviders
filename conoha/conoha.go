@@ -5,8 +5,8 @@ package conoha
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/conoha"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/conoha"
 )
 
 func init() {

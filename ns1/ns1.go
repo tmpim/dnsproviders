@@ -3,8 +3,8 @@ package ns1
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/ns1"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/ns1"
 )
 
 func init() {

@@ -5,8 +5,8 @@ package namedotcom
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/namedotcom"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/namedotcom"
 )
 
 func init() {

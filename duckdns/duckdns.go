@@ -5,8 +5,8 @@ package duckdns
 import (
 	"errors"
 
+	"github.com/go-acme/lego/v4/providers/dns/duckdns"
 	"github.com/tmpim/casket/caskettls"
-	"github.com/go-acme/lego/v3/providers/dns/duckdns"
 )
 
 func init() {
